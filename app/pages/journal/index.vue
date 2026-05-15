@@ -51,30 +51,53 @@ onMounted(() => {
     <h1 class="text-3xl font-bold mb-8 uppercase tracking-tighter">
       {{ displayedText }}  
     </h1>
-    
-    <div v-if="articles?.length" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <NuxtLink 
-        v-for="article in articles" 
-        :key="article.path"
-        :to="getArticleRoute(article.path)"
-        class="block opacity-50 hover:opacity-100 transition-opacity"
-      >
-        <UCard class="h-full">
-          <template #header>
-            <div class="space-y-2">
-              <h2 class="font-bold text-pip-amber text-xl">{{ article.title }}</h2>
-              <h2 class="italic text-sm">{{ article.date }}</h2>
-            </div>
-          </template>
+    <div v-if="articles?.length">
+  <!-- Perspective container for 3D effects -->
+  <div class="grid gap-px bg-zinc-900 border border-zinc-900 overflow-hidden perspective-container">
+    <NuxtLink 
+      v-for="(article, index) in articles" 
+      :key="article.path"
+      v-motion
+      :initial="{ opacity: 0, y: 10 }"
+      :visible="{ opacity: 1, y: 0, transition: { delay: index * 50 } }"
+      :to="getArticleRoute(article.path)"
+      class="journal-card group relative flex items-start justify-between p-8 bg-[#050505] hover:bg-zinc-900/30 transition-all duration-500 ease-out"
+    >
+      <div class="flex gap-8 items-start">
+        <!-- Index indicator -->
+        <span class="font-mono text-[10px] text-zinc-800 mt-2">
+          {{ String(index + 1).padStart(2, '0') }}
+        </span>
+        
+        <div class="space-y-3 transition-transform duration-500 group-hover:translate-x-2">
+          <!-- Title -->
+          <h2 class="font-bold text-2xl text-zinc-100 group-hover:text-primary-500 transition-colors uppercase italic tracking-tight leading-none">
+            {{ article.title }}
+          </h2>
           
-          <p class="text-gray-400 font-mono text-sm mb-4">
+          <!-- Description -->
+          <p class="max-w-2xl text-sm text-zinc-500 font-mono leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
             {{ article.description }}
           </p>
-        </UCard>
-      </NuxtLink>
-    </div>
-    <div v-else class="text-pip-green-dim italic">
-      NO_DATA_FOUND_IN_COLLECTION
-    </div>
+        </div>
+      </div>
+
+      <!-- Metadata / Date -->
+      <div class="hidden lg:flex flex-col items-end gap-2 shrink-0">
+        <div class="font-mono text-[10px] text-zinc-300 italic uppercase tracking-widest">
+          // {{ article.date }}
+        </div>
+        <!-- Decorative element that appears on hover -->
+        <div class="h-px w-0 bg-primary-500/50 group-hover:w-12 transition-all duration-500" />
+      </div>
+    </NuxtLink>
+  </div>
+</div>
+
+<!-- Empty State -->
+<div v-else class="text-pip-green-dim italic py-10 border border-dashed border-zinc-900 text-center uppercase text-xs tracking-[0.2em]">
+  NO_DATA_FOUND_IN_COLLECTION
+</div>
+
   </UContainer>
 </template>
