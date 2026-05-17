@@ -16,6 +16,10 @@ export const pathToI18nConfig = {
     "fr": "/journal",
     "en": "/journal"
   },
+  "/world-data": {
+    "fr": "/world-data",
+    "en": "/world-data"
+  },
   "/": {
     "fr": "/",
     "en": "/"
@@ -26,5 +30,6 @@ export const i18nPathToPath = {
   "/about": "/about",
   "/discovery": "/discovery",
   "/journal": "/journal",
+  "/world-data": "/world-data",
   "/": "/"
 };

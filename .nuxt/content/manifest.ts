@@ -1,5 +1,5 @@
 export const checksums = {
-  "journal": "v3.5.0--8rWhI10588XCDhZEmzwfAGb7sw4R8Y8Pa51IthOioVE"
+  "journal": "v3.5.0--Ut_g18OvlIEn-dsHehIuQsuRkw6x5XWrqMgduEjNDy4"
 }
 export const checksumsStructure = {
   "journal": "kQIHZFNLkSHJRqK05DATkNXSGm9X8XSHQhSph3TR5M4"

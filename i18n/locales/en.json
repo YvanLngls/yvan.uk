@@ -13,7 +13,7 @@
     "description_typed": "Infrastructure engineer. I build in public my experiments and I will document them here. Welcome in my personal lab !",
     "title_1": "Yvan",
     "title_2": "Langlois",
-    "cta_projects": "Projects",
+    "cta_projects": "Journal",
     "cta_profile": "Profile"
   },
   "logs": {
@@ -133,5 +133,22 @@
         "desc": "The definitive list of self-hosted software. A must-have for any homelab enthusiast."
       }
     ]
+  },
+  "world-data": {
+    "title": "Macro Focus",
+    "subtitle": "Macroeconomic and demographic barometer",
+    "section_env": "Global Evolution & Environment",
+    "section_econ": "Economic Stability & Employment",
+    "in_year": "in {year}",
+    "metrics": {
+      "pop": "World Population",
+      "gdp": "World GDP (constant $)",
+      "co2": "GHG Emissions",
+      "net": "Internet Access",
+      "infl": "Global Inflation",
+      "rate": "Global Real Interest Rate",
+      "unemp": "Global Unemployment Rate",
+      "active": "Global Labor Force Participation Rate"
+    }
   }
 }

@@ -24,6 +24,36 @@ const transitionUp = {
 }
 
 useHead({ title: t('nav_discovery') })
+
+import { computed } from 'vue'
+
+// 1. Requête vers l'API de la Banque Mondiale (Indicateur Population Mondiale)
+// 'SP.POP.TOTL' est le code pour la population totale. '1W' correspond au monde entier.
+const { data: rawData, pending, error } = await useFetch(
+  'https://api.worldbank.org/v2/country/1W/indicator/SP.POP.TOTL?format=json&per_page=100'
+)
+
+// 2. Traitement des données pour extraire UNIQUEMENT la dernière valeur valide
+const latestPopulation = computed(() => {
+  if (!rawData.value || !rawData.value[1]) return null
+
+  // L'API renvoie un tableau où l'index 1 contient la liste des années
+  const records = rawData.value[1]
+
+  // On cherche le premier enregistrement qui possède une valeur (l'année la plus récente)
+  const latestRecord = records.find(record => record.value !== null)
+
+  // CORRECTION ICI : On utilise bien 'latestRecord.date' au lieu de 'record.date'
+  return latestRecord 
+    ? { value: latestRecord.value, year: latestRecord.date } 
+    : null
+})
+
+// Fonction utilitaire pour formater joliment les grands nombres (ex: 8 045 311 447 ou 8.05 Mrd)
+const formatNumber = (num) => {
+  if (!num) return ''
+  return new Intl.NumberFormat('fr-FR').format(num)
+}
 </script>
 
 <template>
@@ -88,6 +118,22 @@ useHead({ title: t('nav_discovery') })
           </div>
         </a>
       </div>
+    </div>
+  </div>
+
+  <div class="card-dashboard">
+    <h3>Population Mondiale</h3>
+    
+    <!-- État de chargement -->
+    <div v-if="pending">Chargement des données mondiales...</div>
+    
+    <!-- En cas d'erreur -->
+    <div v-else-if="error" class="error">Impossible de charger la donnée</div>
+    
+    <!-- Affichage du résultat -->
+    <div v-else-if="latestPopulation" class="data-content">
+      <p class="big-number">{{ formatNumber(latestPopulation.value) }}</p>
+      <p class="subtext">Donnée officielle la plus récente (Banque Mondiale, {{ latestPopulation.year }})</p>
     </div>
   </div>
 </template>

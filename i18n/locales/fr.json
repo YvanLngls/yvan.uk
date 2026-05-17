@@ -12,7 +12,7 @@
     "description_typed": "Ingénieur infra. Je build en public mes expérimentations et je pense les documenter ici. Bienvenue dans mon labo personnel !",
     "title_1": "Yvan",
     "title_2": "Langlois",
-    "cta_projects": "Mes Projets",
+    "cta_projects": "Journal",
     "cta_profile": "Mon Profil"
   },
   "logs": {
@@ -186,5 +186,23 @@
         "desc": "Une liste d'outils self-hosted à héberger sur son homelab."
       }
     ]
+  },
+  "world-data": {
+    "title": "Focus Macro",
+    "subtitle": "Baromètre macroéconomique et démographique",
+    "section_env": "Évolution Globale & Environnement",
+    "section_econ": "Stabilité Économique & Emploi",
+    "in_year": "en {year}",
+    "metrics": {
+      "pop": "Population Mondiale",
+      "gdp": "PIB Mondial ($ constants)",
+      "co2": "Émissions de GES",
+      "net": "Accès à Internet",
+      "infl": "Inflation Mondiale",
+      "rate": "Taux d'intérêt réel mondial",
+      "unemp": "Taux de Chômage mondial",
+      "active": "Taux d'activité global"
+    }
   }
+
 }

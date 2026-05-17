@@ -2745,7 +2745,7 @@ var hero$1 = {
 	description_typed: "Ingénieur infra. Je build en public mes expérimentations et je pense les documenter ici. Bienvenue dans mon labo personnel !",
 	title_1: "Yvan",
 	title_2: "Langlois",
-	cta_projects: "Mes Projets",
+	cta_projects: "Journal",
 	cta_profile: "Mon Profil"
 };
 var logs$1 = {
@@ -2930,7 +2930,24 @@ const locale_fr_46json_925f8cf8 = {
 	bento: bento$1,
 	journal: journal$1,
 	about: about$1,
-	discovery: discovery$1
+	discovery: discovery$1,
+	"world-data": {
+	title: "Focus Macro",
+	subtitle: "Baromètre macroéconomique et démographique",
+	section_env: "Évolution Globale & Environnement",
+	section_econ: "Stabilité Économique & Emploi",
+	in_year: "en {year}",
+	metrics: {
+		pop: "Population Mondiale",
+		gdp: "PIB Mondial ($ constants)",
+		co2: "Émissions de GES",
+		net: "Accès à Internet",
+		infl: "Inflation Mondiale",
+		rate: "Taux d'intérêt réel mondial",
+		unemp: "Taux de Chômage mondial",
+		active: "Taux d'activité global"
+	}
+}
 };
 
 var nav_about = "About";
@@ -2946,7 +2963,7 @@ var hero = {
 	description_typed: "Infrastructure engineer. I build in public my experiments and I will document them here. Welcome in my personal lab !",
 	title_1: "Yvan",
 	title_2: "Langlois",
-	cta_projects: "Projects",
+	cta_projects: "Journal",
 	cta_profile: "Profile"
 };
 var logs = {
@@ -3132,7 +3149,24 @@ const locale_en_46json_778f4dd5 = {
 	bento: bento,
 	journal: journal,
 	about: about,
-	discovery: discovery
+	discovery: discovery,
+	"world-data": {
+	title: "Macro Focus",
+	subtitle: "Macroeconomic and demographic barometer",
+	section_env: "Global Evolution & Environment",
+	section_econ: "Economic Stability & Employment",
+	in_year: "in {year}",
+	metrics: {
+		pop: "World Population",
+		gdp: "World GDP (constant $)",
+		co2: "GHG Emissions",
+		net: "Internet Access",
+		infl: "Global Inflation",
+		rate: "Global Real Interest Rate",
+		unemp: "Global Unemployment Rate",
+		active: "Global Labor Force Participation Rate"
+	}
+}
 };
 
 // @ts-nocheck
@@ -3277,7 +3311,7 @@ function publicAssetsURL(...path) {
 }
 
 const checksums = {
-  "journal": "v3.5.0--8rWhI10588XCDhZEmzwfAGb7sw4R8Y8Pa51IthOioVE"
+  "journal": "v3.5.0--Ut_g18OvlIEn-dsHehIuQsuRkw6x5XWrqMgduEjNDy4"
 };
 const checksumsStructure = {
   "journal": "kQIHZFNLkSHJRqK05DATkNXSGm9X8XSHQhSph3TR5M4"
@@ -3582,6 +3616,10 @@ const pathToI18nConfig = {
     "fr": "/journal",
     "en": "/journal"
   },
+  "/world-data": {
+    "fr": "/world-data",
+    "en": "/world-data"
+  },
   "/": {
     "fr": "/",
     "en": "/"
@@ -3592,6 +3630,7 @@ const i18nPathToPath = {
   "/about": "/about",
   "/discovery": "/discovery",
   "/journal": "/journal",
+  "/world-data": "/world-data",
   "/": "/"
 };
 
@@ -3863,7 +3902,22 @@ _8Dlm0rBzeRLOXSekV3hRqG5goKBChvuKzjprrq15M,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"2ac6e-1XFNLRrOViE3xBwWrkHgg0LsLzY\"",
+    "mtime": "2026-05-17T14:52:41.196Z",
+    "size": 175214,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"976c3-+eEq5dzMTbiwV0hljuHpRqoFq+Y\"",
+    "mtime": "2026-05-17T14:52:41.197Z",
+    "size": 620227,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
