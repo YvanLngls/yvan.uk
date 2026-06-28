@@ -110,10 +110,17 @@
     "title": "Discovery",
     "description": "Ressources and technologic watch.",
     "categories": {
+      "personal": "Personal projects",
       "followed": "Followed projects",
       "tools": "Technical ressources"
     },
     "list": [
+      {
+        "name": "MacroView",
+        "category": "personal",
+        "url": "https://yvan.uk/macroview",
+        "desc": "Macroeconomic and demographic barometer"
+      },
       {
         "name": "Deneb Labs",
         "category": "followed",
@@ -134,9 +141,10 @@
       }
     ]
   },
-  "world-data": {
-    "title": "Macro Focus",
+  "macroview": {
+    "title": "MacroView",
     "subtitle": "Macroeconomic and demographic barometer",
+    "read_article": "Read the linked note",
     "section_env": "Global Evolution & Environment",
     "section_econ": "Economic Stability & Employment",
     "in_year": "in {year}",

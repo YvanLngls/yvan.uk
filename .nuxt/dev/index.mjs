@@ -2896,10 +2896,17 @@ var discovery$1 = {
 	title: "Découvrir",
 	description: "Sélection de ressources et de veilles technologiques.",
 	categories: {
+		personal: "Mes projets",
 		followed: "Projets suivis",
 		tools: "Ressources Techniques"
 	},
 	list: [
+		{
+			name: "MacroView",
+			category: "personal",
+			url: "https://yvan.uk/macroview",
+			desc: "Baromètre macroéconomique et démographique"
+		},
 		{
 			name: "Deneb Labs",
 			category: "followed",
@@ -2920,20 +2927,10 @@ var discovery$1 = {
 		}
 	]
 };
-const locale_fr_46json_925f8cf8 = {
-	nav_about: nav_about$1,
-	nav_discovery: nav_discovery$1,
-	nav_blog: nav_blog$1,
-	jukebox: jukebox$1,
-	hero: hero$1,
-	logs: logs$1,
-	bento: bento$1,
-	journal: journal$1,
-	about: about$1,
-	discovery: discovery$1,
-	"world-data": {
-	title: "Focus Macro",
+var macroview$1 = {
+	title: "MacroView",
 	subtitle: "Baromètre macroéconomique et démographique",
+	read_article: "Lire l'article associé",
 	section_env: "Évolution Globale & Environnement",
 	section_econ: "Stabilité Économique & Emploi",
 	in_year: "en {year}",
@@ -2947,7 +2944,19 @@ const locale_fr_46json_925f8cf8 = {
 		unemp: "Taux de Chômage mondial",
 		active: "Taux d'activité global"
 	}
-}
+};
+const locale_fr_46json_925f8cf8 = {
+	nav_about: nav_about$1,
+	nav_discovery: nav_discovery$1,
+	nav_blog: nav_blog$1,
+	jukebox: jukebox$1,
+	hero: hero$1,
+	logs: logs$1,
+	bento: bento$1,
+	journal: journal$1,
+	about: about$1,
+	discovery: discovery$1,
+	macroview: macroview$1
 };
 
 var nav_about = "About";
@@ -3115,10 +3124,17 @@ var discovery = {
 	title: "Discovery",
 	description: "Ressources and technologic watch.",
 	categories: {
+		personal: "Personal projects",
 		followed: "Followed projects",
 		tools: "Technical ressources"
 	},
 	list: [
+		{
+			name: "MacroView",
+			category: "personal",
+			url: "https://yvan.uk/macroview",
+			desc: "Macroeconomic and demographic barometer"
+		},
 		{
 			name: "Deneb Labs",
 			category: "followed",
@@ -3139,20 +3155,10 @@ var discovery = {
 		}
 	]
 };
-const locale_en_46json_778f4dd5 = {
-	nav_about: nav_about,
-	nav_discovery: nav_discovery,
-	nav_blog: nav_blog,
-	jukebox: jukebox,
-	hero: hero,
-	logs: logs,
-	bento: bento,
-	journal: journal,
-	about: about,
-	discovery: discovery,
-	"world-data": {
-	title: "Macro Focus",
+var macroview = {
+	title: "MacroView",
 	subtitle: "Macroeconomic and demographic barometer",
+	read_article: "Read the linked note",
 	section_env: "Global Evolution & Environment",
 	section_econ: "Economic Stability & Employment",
 	in_year: "in {year}",
@@ -3166,7 +3172,19 @@ const locale_en_46json_778f4dd5 = {
 		unemp: "Global Unemployment Rate",
 		active: "Global Labor Force Participation Rate"
 	}
-}
+};
+const locale_en_46json_778f4dd5 = {
+	nav_about: nav_about,
+	nav_discovery: nav_discovery,
+	nav_blog: nav_blog,
+	jukebox: jukebox,
+	hero: hero,
+	logs: logs,
+	bento: bento,
+	journal: journal,
+	about: about,
+	discovery: discovery,
+	macroview: macroview
 };
 
 // @ts-nocheck
@@ -3311,7 +3329,7 @@ function publicAssetsURL(...path) {
 }
 
 const checksums = {
-  "journal": "v3.5.0--Ut_g18OvlIEn-dsHehIuQsuRkw6x5XWrqMgduEjNDy4"
+  "journal": "v3.5.0--0J51mQP4oVSGOBMhjiWvFixpctY16vVY-xaPkvVFnCo"
 };
 const checksumsStructure = {
   "journal": "kQIHZFNLkSHJRqK05DATkNXSGm9X8XSHQhSph3TR5M4"
@@ -3616,6 +3634,10 @@ const pathToI18nConfig = {
     "fr": "/journal",
     "en": "/journal"
   },
+  "/macroview": {
+    "fr": "/macroview",
+    "en": "/macroview"
+  },
   "/world-data": {
     "fr": "/world-data",
     "en": "/world-data"
@@ -3630,6 +3652,7 @@ const i18nPathToPath = {
   "/about": "/about",
   "/discovery": "/discovery",
   "/journal": "/journal",
+  "/macroview": "/macroview",
   "/world-data": "/world-data",
   "/": "/"
 };
@@ -3902,22 +3925,7 @@ _8Dlm0rBzeRLOXSekV3hRqG5goKBChvuKzjprrq15M,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"2ac6e-1XFNLRrOViE3xBwWrkHgg0LsLzY\"",
-    "mtime": "2026-05-17T14:52:41.196Z",
-    "size": 175214,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"976c3-+eEq5dzMTbiwV0hljuHpRqoFq+Y\"",
-    "mtime": "2026-05-17T14:52:41.197Z",
-    "size": 620227,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));

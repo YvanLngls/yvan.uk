@@ -1,7 +1,7 @@
 ---
 title: Welcome
 description: My very first article :)
-date: 15/05/2026
+date: 05/15/2026
 ---
 
 # Intro
