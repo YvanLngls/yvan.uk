@@ -1,0 +1,25 @@
+# Dépendances
+node_modules/
+.pnpm-store/
+
+# Artefacts générés (Nuxt / Nitro)
+.output/
+.nuxt/
+.data/
+
+# Environnement & secrets
+.env
+*.local
+
+# Déploiement (contient des secrets : IP VPS, accès SSH)
+build.sh
+
+# Logs
+*.log
+
+# OS / éditeurs
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/

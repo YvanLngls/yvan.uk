@@ -1,0 +1,11 @@
+services:
+  yvan-front:
+    image: yvan-front:latest
+    container_name: yvan-front
+    restart: always
+    ports:
+      - "127.0.0.1:3100:3100"
+    environment:
+      - PORT=3100
+      - HOST=0.0.0.0
+      - NODE_ENV=production
