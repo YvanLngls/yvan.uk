@@ -34,7 +34,6 @@ frontend/
 │   ├── app.vue                 # layout unique inline (header/nav/footer + effet CRT)
 │   ├── app.config.ts           # thème Nuxt UI (primary: green, neutral: slate)
 │   ├── assets/css/main.css     # Tailwind 4 + palette green custom + font Public Sans
-│   ├── components/             # AppLogo.vue, TemplateMenu.vue (restes du starter, inutilisés)
 │   ├── composables/jukebox.ts  # état audio global
 │   └── pages/
 ├── content/journal/{fr,en}/    # articles Markdown (6 FR, 4 EN)
@@ -42,7 +41,7 @@ frontend/
 ├── i18n/locales/{fr,en}.json   # tout le contenu éditorial (CV, discovery, hero…)
 ├── public/                     # favicon, audio, images/vidéos webp/mp4 des articles
 ├── docs/                       # cette documentation
-└── (pas de server/, layouts/, middleware/, stores/)
+└── (pas de server/, layouts/, middleware/, stores/ ni components/ — supprimé vide)
 ```
 
 ## Routage et pages
@@ -57,7 +56,6 @@ Routing fichier-based dans `app/pages/` :
 | `/journal` | `journal/index.vue` | Liste des articles de la locale courante |
 | `/journal/:slug` | `journal/[slug].vue` | Article rendu via `<ContentRenderer>` |
 | `/macroview` | `macroview.vue` | Dashboard Chart.js (API Banque mondiale) |
-| `/world-data` | `world-data.vue` | ⚠️ Doublon de macroview, page orpheline (à supprimer) |
 
 Particularités :
 

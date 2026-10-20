@@ -15,8 +15,8 @@ Objectif : un dépôt propre, rapide à cloner, sans artefacts générés. **Ré
 
 ## Phase 1 — Code mort et bugs 🟠
 
-- [ ] Supprimer `app/pages/world-data.vue` (doublon cassé de macroview) — et sa route disparaît avec
-- [ ] Supprimer `app/components/AppLogo.vue` et `app/components/TemplateMenu.vue` (restes du starter)
+- [x] Supprimer `app/pages/world-data.vue` (doublon cassé de macroview) ✅ 16/10 — aucune référence dans le code ; choix : suppression sans redirection
+- [x] Supprimer `app/components/AppLogo.vue` et `app/components/TemplateMenu.vue` (restes du starter) ✅ 16/10 — dossier `app/components/` désormais vide
 - [ ] Corriger l'icône `streamline-plump:sign-at-solid` : ajouter `@iconify-json/streamline-plump` **ou** la remplacer par une icône déjà disponible
 - [ ] Corriger le `Dockerfile` : chemin L23, base `node:22` alignée avec la CI, réactiver `--frozen-lockfile`
 - [ ] Nettoyer les commentaires de debug dans `nuxt.config.ts`
@@ -25,6 +25,7 @@ Objectif : un dépôt propre, rapide à cloner, sans artefacts générés. **Ré
 
 ## Phase 2 — Durcissement qualité 🟡
 
+- [ ] **Remettre la CI au vert** : `eslint --fix` (majorité auto-fixable), puis correction manuelle du typecheck (`about.vue`, `discovery.vue`, `macroview.vue`) — constat du 16/10 : la CI échoue depuis le début
 - [ ] Ajouter `pnpm build` à la CI (actuellement seulement lint + typecheck)
 - [ ] Vérifier le fallback i18n pour les 2 articles FR sans version EN (`ai-my-take`, `first-short-story`) — traduire ou accepter le fallback
 - [ ] Activer `app.pageTransition` dans `nuxt.config.ts` **ou** supprimer le CSS mort correspondant
