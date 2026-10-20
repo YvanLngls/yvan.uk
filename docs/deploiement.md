@@ -15,6 +15,8 @@ Séquence du script :
 
 Éléments associés : `Dockerfile` multi-stage (runtime Nitro standalone, port 3100), `docker-compose.yml`, CI GitHub Actions (lint + typecheck uniquement, pas de build), Renovate.
 
+Accès GitHub en **SSH** depuis le 16/10/2026 : clé dédiée `~/.ssh/id_ed25519_github` (remote configuré en `git@github.com:…`) — la clé `id_ed25519` reste réservée au VPS.
+
 ## Avantages de l'approche
 
 - Script unique, transparent, reproductible — tout le pipeline est lisible d'un coup d'œil
@@ -29,7 +31,7 @@ Séquence du script :
 - **Pas de health check post-déploiement** ni de rollback automatique
 - **Script non versionné** : seule copie sur la machine locale ; panne du poste = perte du pipeline
 - **Secrets en clair** dans le script, lisibles par tout processus tournant sous l'utilisateur
-- IP du VPS visible dans l'historique git (dépôt public) — non critique en soi, mais à savoir
+- ~~IP du VPS visible dans l'historique git~~ — résolu par la réinitialisation de l'historique (16/10/2026)
 
 ## Recommandations
 

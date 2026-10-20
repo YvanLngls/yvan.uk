@@ -2,16 +2,16 @@
 
 Chantiers issus du bilan du 16/10/2026 (voir [etat-actuel.md](./etat-actuel.md)). Ordre de priorité : du plus bloquant/risqué vers l'amélioration continue.
 
-## Phase 0 — Hygiène du dépôt git 🔴
+## Phase 0 — Hygiène du dépôt git ✅ (terminée le 16/10/2026)
 
-Objectif : un dépôt propre, rapide à cloner, sans artefacts générés.
+Objectif : un dépôt propre, rapide à cloner, sans artefacts générés. **Résultat : 57 fichiers suivis (contre 36 169), pack de 25,7 MiB (contre 192 MiB).**
 
-- [ ] Refaire le `.gitignore` (`node_modules/`, `.nuxt/`, `.output/`, `.data/`, `*.log`, `.pnpm-store/`, `.DS_Store`…)
-- [ ] Supprimer `package-lock.json` (npm n'est utilisé nulle part ; pnpm uniquement)
-- [ ] Retirer les artefacts déjà suivis : `git rm -r --cached node_modules .nuxt .data`
-- [ ] Nettoyer l'historique git (`git filter-repo`) pour purger les 36 000 fichiers — ⚠️ implique un force push, à faire en connaissance de cause
-- [ ] Décider ce qui doit rester versionné : images/vidéos lourdes de `public/journal/` (gérer en LFS ? CDN ?)
-- [ ] Vérifier que `build.sh` (gitignoré volontairement) ne contient rien d'indispensable à tracer ailleurs
+- [x] Refaire le `.gitignore` (`node_modules/`, `.nuxt/`, `.output/`, `.data/`, `*.log`, `.pnpm-store/`, `.DS_Store`…)
+- [x] Supprimer `package-lock.json` (npm n'est utilisé nulle part ; pnpm uniquement)
+- [x] Retirer les artefacts déjà suivis (`git rm -r --cached node_modules .nuxt .data`)
+- [x] Réinitialiser l'historique : branche orpheline → un seul commit propre + force push (choix retenu à la place de `git filter-repo`). Backup de l'ancien dépôt : `~/yvan.uk-backup-20261016.bundle`
+- [x] Décider ce qui doit rester versionné : `public/journal/` reste dans git (~28 M — LFS/CDN jugés superflus)
+- [ ] Sauvegarder `build.sh` hors du poste, puis supprimer le backup bundle une fois le site vérifié (actions manuelles)
 
 ## Phase 1 — Code mort et bugs 🟠
 

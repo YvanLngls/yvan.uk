@@ -12,11 +12,13 @@ Bilan établi le 16/10/2026 (Nuxt 4.4.4, @nuxt/ui 4.7, @nuxt/content 3.13, pnpm 
 
 ## Dette technique
 
-### 🔴 Critique — hygiène du dépôt git
+### 🔴 Critique — hygiène du dépôt git ✅ résolu le 16/10/2026
 
-- **~36 000 fichiers suivis** dans git, dont l'intégralité de `node_modules/`, 243 fichiers `.nuxt/` générés et la base SQLite `.data/content/contents.sqlite`. Pack git ≈ **192 MiB**.
-- **Double lockfile** : `package-lock.json` (npm, 754 Ko, obsolète) coexiste avec `pnpm-lock.yaml`.
-- `.gitignore` réduit à 3 lignes (`.env`, `build.sh`, `.output`).
+Résolu par réinitialisation complète de l'historique (un seul commit propre + force push ; backup : `~/yvan.uk-backup-20261016.bundle`) :
+
+- 36 169 fichiers suivis (dont `node_modules/`, `.nuxt/`, `.data/`) → **57 fichiers** ; pack **192 MiB → 25,7 MiB**
+- Double lockfile éliminé (npm supprimé, pnpm uniquement) ; `.gitignore` refait
+- Reste côté utilisateur : sauvegarde hors poste de `build.sh`, suppression du backup bundle après vérification du site
 
 ### 🟠 Important — code mort et bugs
 
