@@ -19,31 +19,7 @@ const { data: articles } = await useAsyncData(
 )
 
 const fullText = computed(() => t('journal.title'))
-const displayedText = ref('')
-const isDone = ref(false)
-
-const typeWriter = () => {
-  displayedText.value = ''
-  isDone.value = false
-  let i = 0
-  const speed = 30
-
-  const timer = setInterval(() => {
-    if (i < fullText.value.length) {
-      displayedText.value += fullText.value.charAt(i)
-      i++
-    } else {
-      clearInterval(timer)
-      isDone.value = true
-    }
-  }, speed)
-}
-
-watch(locale, () => typeWriter())
-
-onMounted(() => {
-  typeWriter()
-})
+const { displayedText } = useTypewriter(fullText)
 </script>
 
 <template>

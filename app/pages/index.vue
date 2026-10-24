@@ -1,37 +1,13 @@
 <script setup lang="ts">
 const { locale, t } = useI18n()
 
-// Logique du Typewriter
+// Effet machine à écrire — se relance tout seul quand la langue change (via fullText)
 const fullText = computed(() => t('hero.description_typed'))
-const displayedText = ref('')
-const isDone = ref(false)
+const { displayedText, isDone } = useTypewriter(fullText)
 
-const typeWriter = () => {
-  displayedText.value = ''
-  isDone.value = false
-  let i = 0
-  const speed = 30 // millisecondes entre chaque caractère
-
-  const timer = setInterval(() => {
-    if (i < fullText.value.length) {
-      displayedText.value += fullText.value.charAt(i)
-      i++
-    } else {
-      clearInterval(timer)
-      isDone.value = true
-    }
-  }, speed)
-}
-
-// Relancer l'effet quand la langue change
+// Forcer le rechargement des articles quand la langue change
 watch(locale, async () => {
-  typeWriter()
-  await refresh() // Manually force the data to update when locale changes
-})
-
-// Lancement au montage
-onMounted(() => {
-  typeWriter()
+  await refresh()
 })
 
 // Récupération des articles de blog (filtrés par langue)

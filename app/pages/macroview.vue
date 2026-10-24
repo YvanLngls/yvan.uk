@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Line } from 'vue-chartjs'
 import { Chart, registerables, type ChartOptions } from 'chart.js'
@@ -7,7 +7,7 @@ import { formatValue, processData, type WorldBankResponse, type MetricInfo } fro
 
 Chart.register(...registerables)
 
-const { locale, t } = useI18n()
+const { t } = useI18n()
 const selectedMetric = ref<MetricInfo | null>(null)
 
 // 1. Appels en parallèle des 8 API de la Banque Mondiale
@@ -96,43 +96,9 @@ const rateInfo = computed(() => processData(rateData.value, 'macroview.metrics.r
 const unempInfo = computed(() => processData(unempData.value, 'macroview.metrics.unemp', '#f38ba8', 'percent'))
 const activeInfo = computed(() => processData(activeData.value, 'macroview.metrics.active', '#94e2d5', 'percent'))
 
-// Logique de l'effet Typewriter
+// Effet machine à écrire — vitesse ralentie pour savourer l'effet sur un titre court
 const fullText = computed(() => t('macroview.title'))
-const displayedText = ref('')
-const isDone = ref(false)
-let timer: ReturnType<typeof setInterval> | null = null
-
-const typeWriter = () => {
-  // On nettoie le timer précédent s'il existe pour éviter les conflits de langue
-  if (timer) clearInterval(timer)
-
-  displayedText.value = ''
-  isDone.value = false
-  let i = 0
-  const speed = 40 // Légèrement ralenti pour savourer l'effet sur un titre court
-
-  timer = setInterval(() => {
-    if (i < fullText.value.length) {
-      displayedText.value += fullText.value.charAt(i)
-      i++
-    } else {
-      if (timer) clearInterval(timer)
-      isDone.value = true
-    }
-  }, speed)
-}
-
-// Relancer l'effet si la langue change
-watch(locale, () => typeWriter())
-
-onMounted(() => {
-  typeWriter()
-})
-
-// Bonne pratique : on nettoie si l'utilisateur quitte la page au milieu de l'animation
-onUnmounted(() => {
-  if (timer) clearInterval(timer)
-})
+const { displayedText } = useTypewriter(fullText, 40)
 </script>
 
 <template>
