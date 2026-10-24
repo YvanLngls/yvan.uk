@@ -36,7 +36,7 @@ Objectif : un dépôt propre, rapide à cloner, sans artefacts générés. **Ré
 ## Phase 3 — Améliorations 🔵
 
 - [x] Factoriser l'effet typewriter ✅ 24/10 — composable `useTypewriter` (`app/composables/useTypewriter.ts`) utilisé par les 3 pages ; corrige au passage deux timers jamais nettoyés (index, journal)
-- [ ] Trier les articles par date réelle (parser le frontmatter plutôt que tri lexicographique)
+- [x] Trier les articles par date réelle ✅ 24/10 — dates ISO `YYYY-MM-DD` dans les frontmatter (9 articles migrés), affichage localisé via `formatDate` (`Intl.DateTimeFormat` : « 14 octobre 2026 » / « October 14, 2026 »), schéma zod validant le format, tri SQL exact même entre années
 - [x] Uniformiser le typage TypeScript ✅ 24/10 — toutes les pages sont en `lang="ts"` et passent le typecheck
 - [x] `discovery.vue` import de `computed` ✅ 24/10 — déjà en tête de script (observation obsolète)
 - [ ] À discuter : toggle dark/light, recherche dans le journal, RSS feed, analytics respectueux de la vie privée
