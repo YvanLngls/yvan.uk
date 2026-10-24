@@ -13,15 +13,14 @@ Objectif : un dépôt propre, rapide à cloner, sans artefacts générés. **Ré
 - [x] Décider ce qui doit rester versionné : `public/journal/` reste dans git (~28 M — LFS/CDN jugés superflus)
 - [ ] Sauvegarder `build.sh` hors du poste, puis supprimer le backup bundle une fois le site vérifié (actions manuelles)
 
-## Phase 1 — Code mort et bugs 🟠
+## Phase 1 — Code mort et bugs ✅ (terminée le 24/10/2026)
 
 - [x] Supprimer `app/pages/world-data.vue` (doublon cassé de macroview) ✅ 16/10 — aucune référence dans le code ; choix : suppression sans redirection
 - [x] Supprimer `app/components/AppLogo.vue` et `app/components/TemplateMenu.vue` (restes du starter) ✅ 16/10 — dossier `app/components/` désormais vide
-- [ ] Corriger l'icône `streamline-plump:sign-at-solid` : ajouter `@iconify-json/streamline-plump` **ou** la remplacer par une icône déjà disponible
-- [ ] Corriger le `Dockerfile` : chemin L23, base `node:22` alignée avec la CI, réactiver `--frozen-lockfile`
-- [ ] Nettoyer les commentaires de debug dans `nuxt.config.ts`
-- [ ] SEO : `useHead` dynamique sur `/journal/:slug` (titre + description depuis le frontmatter)
-- [ ] Réparer ou supprimer `titleTemplate` dans `app.vue`
+- [x] Icône `streamline-plump:sign-at-solid` ✅ 24/10 — collection `@iconify-json/streamline-plump` installée
+- [x] `Dockerfile` ✅ 24/10 — base `node:22` alignée avec la CI, `--frozen-lockfile`, corepack piné sur pnpm 10.33.2, étape de build natif hacky supprimée (redondante avec `onlyBuiltDependencies`)
+- [x] Commentaires de debug `nuxt.config.ts` ✅ 24/10
+- [x] SEO `/journal/:slug` ✅ 24/10 — `useHead` réactif (titre + description depuis le frontmatter) ; `titleTemplate` simplifié
 
 ## Phase 2 — Durcissement qualité 🟡
 

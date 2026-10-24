@@ -20,16 +20,8 @@ Résolu par réinitialisation complète de l'historique (un seul commit propre +
 - Double lockfile éliminé (npm supprimé, pnpm uniquement) ; `.gitignore` refait
 - Reste côté utilisateur : sauvegarde hors poste de `build.sh`, suppression du backup bundle après vérification du site
 
-### 🟠 Important — code mort et bugs
-
-- **Icône manquante** : `about.vue` référence `streamline-plump:sign-at-solid` (via les JSON i18n) mais `@iconify-json/streamline-plump` n'est pas installé → icône non affichée.
-- **`Dockerfile:23`** : chemin cassé (`better-sqlite3@* /node_modules`, espace parasite) masqué par `|| true` ; image en `node:20` alors que la CI cible Node 22 ; `--frozen-lockfile` commenté.
-- **SEO article** : pas de `useHead` dynamique sur `/journal/:slug` (le titre de l'article n'apparaît pas dans l'onglet).
-- **`titleTemplate` inopérant** dans `app.vue` (`chunk ? chunk : title` ne fait rien).
-
 ### 🟡 À surveiller
 
-- Commentaires de debug laissés dans `nuxt.config.ts:39-44` (« ← Corrigé », « ← Sans slash final, plus fiable »).
 - Code du typewriter **dupliqué sur 3 pages** (index, journal, macroview) — non factorisé.
 - Tri des articles par date **lexicographique** (`order('date', 'DESC')` sur `MM/DD/YYYY`) : fonctionne avec ce format, fragile autrement — gardé sous contrôle par un test.
 - 2 articles FR (`ai-my-take.md`, `first-short-story.md`) sans version anglaise — **choix assumé (24/10)** : le journal n'est pas bilingue par obligation, la parité i18n ne porte que sur l'interface (testée).
