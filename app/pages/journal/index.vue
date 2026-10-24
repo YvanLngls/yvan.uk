@@ -61,7 +61,7 @@ const { displayedText } = useTypewriter(fullText)
           <!-- Metadata / Date -->
           <div class="hidden lg:flex flex-col items-end gap-2 shrink-0">
             <div class="font-mono text-[10px] text-zinc-300 italic uppercase tracking-widest">
-              // {{ article.date }}
+              // {{ formatDate(article.date, locale) }}
             </div>
             <!-- Decorative element that appears on hover -->
             <div class="h-px w-0 bg-primary-500/50 group-hover:w-12 transition-all duration-500" />

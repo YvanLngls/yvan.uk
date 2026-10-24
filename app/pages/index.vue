@@ -133,7 +133,7 @@ const transitionUp = {
             </span>
           </div>
           <div class="hidden md:block font-mono text-[10px] text-zinc-700 italic uppercase">
-            // {{ post.date }}
+            // {{ formatDate(post.date, locale) }}
           </div>
         </NuxtLink>
       </div>
