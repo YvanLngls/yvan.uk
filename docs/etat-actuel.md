@@ -1,6 +1,6 @@
 # État actuel du projet
 
-Bilan établi le 16/10/2026, mis à jour le 24/10/2026 (Nuxt 4.4.4, @nuxt/ui 4.7, @nuxt/content 3.13, pnpm 10).
+Bilan établi le 16/10/2026, mis à jour le 24/10/2026 (Nuxt 4.4.4, @nuxt/ui 4.7, @nuxt/content 3.16, pnpm 10).
 
 ## Ce qui fonctionne
 

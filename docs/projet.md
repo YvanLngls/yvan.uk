@@ -18,8 +18,8 @@ Le projet est issu du **starter template Nuxt UI** (des restes du template sont 
 | Framework | Nuxt (structure `app/`, convention Nuxt 4) | 4.4.4 |
 | UI | Vue + @nuxt/ui | 3.5 / 4.7 |
 | CSS | Tailwind CSS (syntaxe v4, `@theme` dans `app/assets/css/main.css`) | 4 |
-| Contenu | @nuxt/content (Markdown → SQLite local via `better-sqlite3`) | 3.13 |
-| i18n | @nuxtjs/i18n (stratégie `no_prefix`) | 10.3 |
+| Contenu | @nuxt/content (Markdown → SQLite local via `better-sqlite3`) | 3.16 |
+| i18n | @nuxtjs/i18n (stratégie `no_prefix`) | 10.6 |
 | Animations | @vueuse/motion (directives `v-motion`, directive custom `pop-in`) | 3 |
 | Graphiques | chart.js + vue-chartjs | 4.5 / 5.3 |
 | Icônes | @iconify-json/lucide, @iconify-json/simple-icons (+ heroicons via @nuxt/ui) | — |
@@ -34,14 +34,16 @@ frontend/
 │   ├── app.vue                 # layout unique inline (header/nav/footer + effet CRT)
 │   ├── app.config.ts           # thème Nuxt UI (primary: green, neutral: slate)
 │   ├── assets/css/main.css     # Tailwind 4 + palette green custom + font Public Sans
-│   ├── composables/jukebox.ts  # état audio global
+│   ├── composables/            # jukebox.ts (audio), useTypewriter.ts (machine à écrire)
+│   ├── utils/                  # world-bank.ts (données macro), format-date.ts (dates localisées)
 │   └── pages/
-├── content/journal/{fr,en}/    # articles Markdown (6 FR, 4 EN)
-├── content.config.ts           # collection `journal` (schéma zod : title, date, description)
+├── content/journal/{fr,en}/    # articles Markdown (5 FR, 4 EN), dates ISO
+├── content.config.ts           # collection `journal` (schéma zod validé : title, date ISO, description)
 ├── i18n/locales/{fr,en}.json   # tout le contenu éditorial (CV, discovery, hero…)
 ├── public/                     # favicon, audio, images/vidéos webp/mp4 des articles
+├── tests/                      # 15 tests Vitest (4 fichiers)
 ├── docs/                       # cette documentation
-└── (pas de server/, layouts/, middleware/, stores/ ni components/ — supprimé vide)
+└── (pas de server/, layouts/, middleware/, stores/ ni components/)
 ```
 
 ## Routage et pages
@@ -66,7 +68,7 @@ Particularités :
 
 ## Contenu et i18n
 
-- **Contenu** : collection `journal` déclarée dans `content.config.ts` (type `page`, schéma zod `title`/`date`/`description`). Frontmatter au format `MM/DD/YYYY`. Les médias des articles sont dans `public/journal/`.
+- **Contenu** : collection `journal` déclarée dans `content.config.ts` (type `page`, schéma zod validé `title`/`date`/`description`). Frontmatter au format ISO `YYYY-MM-DD` — tri SQL exact même entre années, affichage localisé via `formatDate` (`app/utils/format-date.ts`). Les médias des articles sont dans `public/journal/`.
 - **i18n** : deux locales (`fr` défaut, `en`), fichiers JSON dans `i18n/locales/`, chargement paresseux, détection navigateur désactivée. Toggle fr↔en dans le header (`app.vue`).
 - Rechargement des données au changement de langue : `{ watch: [locale] }` sur les `useAsyncData`.
 
@@ -81,14 +83,15 @@ Particularités :
 - Nuxt UI v4 (composants `UApp`, `UButton`, `UBadge`, `UIcon`…), configuré via `app/app.config.ts`.
 - Thème **uniquement dark**, font « Public Sans », palette green recalibrée.
 - Effet CRT global : scanlines fixes + barre de balayage animée + vignettage, en CSS pur (`app.vue`).
-- Transition de page floutée (`.page-enter/leave` dans `app.vue`) — définie mais non activée via `app.pageTransition` dans `nuxt.config.ts`.
+- Transition de page floutée entre les routes (`app.pageTransition` = « page » ; CSS `.page-enter/leave` dans `app.vue`).
 
 ## Qualité, CI/CD, déploiement
 
 - **ESLint** : flat config `eslint.config.mjs` (@nuxt/eslint, style `commaDangle: 'never'`, `braceStyle: '1tbs'`).
-- **Tests** : Vitest (`pnpm test`) — 11 tests, 3 fichiers dans `tests/` : formatage/traitement des données Banque mondiale (`app/utils/world-bank.ts`), parité des locales i18n, frontmatter des articles.
+- **Tests** : Vitest (`pnpm test`) — 15 tests, 4 fichiers dans `tests/` : formatage/traitement des données Banque mondiale (`app/utils/world-bank.ts`), formatage localisé des dates (`app/utils/format-date.ts`), parité des locales i18n, frontmatter des articles.
 - **Typecheck** : `nuxt typecheck` (vue-tsc) — 0 erreur depuis le 24/10.
-- **CI** : `.github/workflows/ci.yml` — sur push : `lint` + `typecheck` + `test` (Node 22). Pas d'étape build.
+- **Devtools** : actives en dev uniquement (clé `$production` dans `nuxt.config.ts` + `NODE_ENV=production` figé au build Docker).
+- **CI** : `.github/workflows/ci.yml` — sur push : `lint` + `typecheck` + `test` + `build` (Node 22).
 - **Renovate** : `renovate.json` (preset Nuxt).
 - **Déploiement** auto-hébergé manuel : `Dockerfile` multi-stage (runtime Nitro standalone, port 3100) + `docker-compose.yml` + script `build.sh` (build → `docker save` → rsync/ssh vers un VPS → `docker load` + compose up).
 

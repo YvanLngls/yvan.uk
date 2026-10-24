@@ -9,4 +9,4 @@ Documentation du site personnel [yvan.uk](https://yvan.uk) (code source dans `fr
 | [roadmap.md](./roadmap.md) | Roadmap des chantiers, par ordre de priorité |
 | [deploiement.md](./deploiement.md) | CI/CD et déploiement : analyse du pipeline actuel, limites, plan d'amélioration |
 
-Ces documents datent du **16/10/2026**. Les mettre à jour au fil de l'avancement des chantiers.
+Ces documents ont été établis le 16/10/2026 et sont tenus à jour au fil des chantiers (dernière passe le 24/10/2026).
