@@ -1,11 +1,25 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
+interface DiscoveryItem {
+  name: string
+  category: string
+  url: string
+  desc: string
+}
+
 const { t, tm, rt } = useI18n()
 
-const categories = computed(() => tm('discovery.categories'))
+// tm() renvoie un type i18n récursif qui fait exploser le typecheck (TS2589) —
+// l'assignation à unknown court-circuite l'inférence, puis on caste proprement
+const categories = computed<Record<string, string>>(() => {
+  const raw: unknown = tm('discovery.categories')
+  return raw as Record<string, string>
+})
 
-const discoveryList = computed(() => {
-  const rawList = tm('discovery.list')
-  return Object.values(rawList).map(item => ({
+const discoveryList = computed<DiscoveryItem[]>(() => {
+  const raw: unknown = tm('discovery.list')
+  return Object.values(raw as DiscoveryItem[]).map(item => ({
     name: rt(item.name),
     category: rt(item.category),
     url: rt(item.url),
@@ -25,26 +39,27 @@ const transitionUp = {
 
 useHead({ title: t('nav_discovery') })
 
-import { computed } from 'vue'
-
 const isExternal = (url: string) => {
   try {
     // Si c'est un chemin relatif (ex: '/about'), c'est interne
     if (url.startsWith('/')) return false
-    
+
     // Sinon, on compare le domaine avec celui de la page actuelle
     return new URL(url).hostname !== window.location.hostname
   } catch {
     return false
   }
 }
-
 </script>
 
 <template>
   <div class="space-y-12">
     <!-- Header avec animation d'entrée -->
-    <header v-motion v-bind="transitionUp" class="border-l-4 border-primary-500 pl-6 py-2">
+    <header
+      v-motion
+      v-bind="transitionUp"
+      class="border-l-4 border-primary-500 pl-6 py-2"
+    >
       <h1 class="text-3xl font-black italic uppercase tracking-tighter text-white">
         {{ t('discovery.title') }}
       </h1>
@@ -54,9 +69,13 @@ const isExternal = (url: string) => {
     </header>
 
     <!-- Boucle sur les catégories -->
-    <div v-for="(label, key, index) in categories" :key="key" class="space-y-6">
+    <div
+      v-for="(label, key, index) in categories"
+      :key="key"
+      class="space-y-6"
+    >
       <!-- Les titres de section apparaissent avec un léger décalage -->
-      <div 
+      <div
         v-motion
         :initial="{ opacity: 0, x: -10 }"
         :enter="{ opacity: 1, x: 0, transition: { delay: index * 100, duration: 400 } }"
@@ -65,12 +84,12 @@ const isExternal = (url: string) => {
         <h2 class="text-primary-500 font-mono text-[10px] uppercase tracking-[0.4em] whitespace-nowrap">
           // {{ rt(label) }}
         </h2>
-        <div class="h-px w-full bg-zinc-900"></div>
+        <div class="h-px w-full bg-zinc-900" />
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <a 
-          v-for="(link, linkIndex) in getLinksByCat(key)" 
+        <a
+          v-for="(link, linkIndex) in getLinksByCat(key)"
           :key="rt(link.name)"
           v-motion
           :initial="{ opacity: 0, scale: 0.98 }"
@@ -81,14 +100,17 @@ const isExternal = (url: string) => {
           class="group relative p-5 border border-zinc-900 bg-zinc-950/30 hover:bg-primary-500/5 transition-all duration-300 rounded-sm overflow-hidden"
         >
           <!-- Petit effet de coin au survol -->
-          <div class="absolute top-0 right-0 w-8 h-8 bg-primary-500/10 translate-x-4 -translate-y-4 rotate-45 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform"></div>
+          <div class="absolute top-0 right-0 w-8 h-8 bg-primary-500/10 translate-x-4 -translate-y-4 rotate-45 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
 
           <div class="flex flex-col h-full">
             <div class="flex justify-between items-start mb-3">
               <span class="text-white font-bold tracking-tight group-hover:text-primary-500 transition-colors uppercase italic">
                 {{ rt(link.name) }}
               </span>
-              <UIcon name="i-heroicons-arrow-up-right" class="text-zinc-700 group-hover:text-primary-500 w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <UIcon
+                name="i-heroicons-arrow-up-right"
+                class="text-zinc-700 group-hover:text-primary-500 w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
             </div>
 
             <p class="text-sm text-zinc-500 leading-relaxed mb-4 flex-1 font-medium">

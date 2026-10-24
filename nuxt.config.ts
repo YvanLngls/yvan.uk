@@ -17,12 +17,16 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true }
   },
-
-  compatibilityDate: '2025-01-15',
+  sourcemap: {
+    server: false,
+    client: false
+  },
 
   devServer: {
     port: 3100
   },
+
+  compatibilityDate: '2025-01-15',
   eslint: {
     config: {
       stylistic: {
@@ -36,10 +40,9 @@ export default defineNuxtConfig({
       { code: 'fr', name: 'Français', file: 'fr.json' },
       { code: 'en', name: 'English', file: 'en.json' }
     ],
-    strategy: 'no_prefix',  // ← Corrigé : tu voulais /fr et /en dans les URLs
+    strategy: 'no_prefix', // ← Corrigé : tu voulais /fr et /en dans les URLs
     defaultLocale: 'fr',
-    lazy: true,
-    langDir: 'locales',  // ← Sans slash final, plus fiable
+    langDir: 'locales', // ← Sans slash final, plus fiable
     detectBrowserLanguage: false
     // vueI18n: './i18n.config.ts'  // ← String, pas un objet !
   },
@@ -50,10 +53,6 @@ export default defineNuxtConfig({
         enter: { scale: 1, opacity: 1 }
       }
     }
-  },
-  sourcemap: {
-    server: false,
-    client: false
   }
 
 })

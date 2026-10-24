@@ -8,15 +8,14 @@ export const useJukebox = () => {
   onMounted(() => {
     audio.value = new Audio(currentTrack.value)
     audio.value.loop = true
-    
+
     // Si l'état dit que ça joue (ex: retour sur l'onglet), on synchronise
     if (isPlaying.value) audio.value.play()
-    
   })
 
   const toggle = () => {
     if (!audio.value) return
-    
+
     if (isPlaying.value) {
       audio.value.pause()
     } else {
