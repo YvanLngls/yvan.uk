@@ -1,7 +1,7 @@
 ---
 title: MacroView
 description: Un outil pour visualiser rapidement la situation macro
-date: 05/17/2026
+date: '2026-05-17'
 ---
 
 > *Le véritable voyage de découverte ne consiste pas à chercher de nouveaux paysages, mais à avoir de nouveaux yeux.*

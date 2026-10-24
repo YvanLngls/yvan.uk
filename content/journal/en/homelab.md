@@ -1,7 +1,7 @@
 ---
 title: My cloud native homelab
 description: An overview of my cloud native homelab
-date: 08/17/2026
+date: '2026-08-17'
 ---
 
 > *We must cultivate our garden.*

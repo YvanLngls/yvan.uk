@@ -1,7 +1,7 @@
 ---
 title: Bienvenue
 description: Mon tout premier article :)
-date: 05/15/2026
+date: '2026-05-15'
 ---
 
  > *« Ce qui est bien avec les ordinateurs, c'est qu'ils font ce qu'on leur dit de faire. Ce qui est mal, c'est qu'ils font ce qu'on leur dit de faire.»*

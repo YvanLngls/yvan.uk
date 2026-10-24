@@ -1,7 +1,7 @@
 ---
 title: Robotique
 description: Mon projet de main robotique
-date: 08/07/2026
+date: '2026-08-07'
 ---
 
 # Main robotique

@@ -1,7 +1,7 @@
 ---
 title: MacroView
 description: A tool to quickly visualize the macroeconomic landscape
-date: 05/17/2026
+date: '2026-05-17'
 ---
 
 > *The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.*

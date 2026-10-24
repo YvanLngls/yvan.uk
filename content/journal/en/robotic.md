@@ -1,7 +1,7 @@
 ---
 title: Robotics
 description: My robotic hand project
-date: 08/07/2026
+date: '2026-08-07'
 ---
 
 # Robotic Hand

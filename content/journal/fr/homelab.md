@@ -1,7 +1,7 @@
 ---
 title: Mon homelab cloud native
 description: Présentation de mon homelab cloud native
-date: 08/17/2026
+date: '2026-08-17'
 ---
 
 > *Il faut cultiver notre jardin.*

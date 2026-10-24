@@ -32,8 +32,8 @@ describe('contenu du journal', () => {
         const fm = frontmatter(`${dir}/${file}`)
         expect(fm, `${locale}/${file} : frontmatter absent`).toMatch(/^title:\s*\S/m)
         expect(fm, `${locale}/${file} : description absente`).toMatch(/^description:\s*\S/m)
-        // Le tri des articles est lexicographique — le format doit rester MM/DD/YYYY
-        expect(fm, `${locale}/${file} : date absente ou hors format MM/DD/YYYY`).toMatch(/^date:\s*\d{2}\/\d{2}\/\d{4}\s*$/m)
+        // Format ISO requis : le tri SQL reste chronologique, même entre années
+        expect(fm, `${locale}/${file} : date absente ou hors format ISO YYYY-MM-DD`).toMatch(/^date:\s*'\d{4}-\d{2}-\d{2}'\s*$/m)
       }
     }
   })

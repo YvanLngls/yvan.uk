@@ -1,7 +1,7 @@
 ---
 title: Exercice d'écriture
 description: Une nouvelle que j'ai écrite dans le cadre d'un atelier d'écriture sur le thème messes basses
-date: 06/15/2026
+date: '2026-06-15'
 ---
 
 Une nouvelle que j'ai écrite dans le cadre d'un atelier d'écriture du 15 juin 2026 sur le thème **messes basses**.

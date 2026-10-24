@@ -1,7 +1,7 @@
 ---
 title: Welcome
 description: My very first article :)
-date: 05/15/2026
+date: '2026-05-15'
 ---
 
  > *« The good thing about computers is that they do what you tell them to do. The bad thing is that they do exactly what you tell them to do.»*

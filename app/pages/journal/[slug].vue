@@ -28,7 +28,7 @@ useHead(() => ({
           {{ post.title }}
         </h1>
         <p class="text-gray-500">
-          {{ post.date }}
+          {{ formatDate(post.date, locale) }}
         </p>
       </header>
 
