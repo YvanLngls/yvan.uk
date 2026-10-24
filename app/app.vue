@@ -10,7 +10,7 @@ const title = 'yvan.uk'
 const description = 'Explorations techniques, laboratoire et notes d\'un passionné de technologie.'
 
 useHead({
-  titleTemplate: chunk => chunk ? `${chunk}` : title,
+  titleTemplate: chunk => chunk || title,
   link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   htmlAttrs: { lang: locale.value }
 })

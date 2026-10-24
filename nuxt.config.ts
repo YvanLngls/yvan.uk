@@ -40,11 +40,10 @@ export default defineNuxtConfig({
       { code: 'fr', name: 'Français', file: 'fr.json' },
       { code: 'en', name: 'English', file: 'en.json' }
     ],
-    strategy: 'no_prefix', // ← Corrigé : tu voulais /fr et /en dans les URLs
+    strategy: 'no_prefix',
     defaultLocale: 'fr',
-    langDir: 'locales', // ← Sans slash final, plus fiable
+    langDir: 'locales',
     detectBrowserLanguage: false
-    // vueI18n: './i18n.config.ts'  // ← String, pas un objet !
   },
   motion: {
     directives: {
