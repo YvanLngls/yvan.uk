@@ -1,64 +1,54 @@
-# Nuxt Starter Template
+# yvan.uk
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Site personnel — explorations techniques, homelab, robotique et notes en français et en anglais, avec une esthétique terminal/CRT rétro. En ligne sur [yvan.uk](https://yvan.uk).
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+## Fonctionnalités
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+- **Journal bilingue** (fr/en) propulsé par `@nuxt/content` — articles en Markdown
+- **MacroView** : dashboard de 8 indicateurs mondiaux (API Banque mondiale, Chart.js)
+- **Jukebox** : musique d'ambiance intégrée
+- Effet CRT global (scanlines, balayage), transitions de page fondu/flouté, thème sombre
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
+## Stack
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
+Nuxt 4 · Vue 3 · Nuxt UI · Tailwind CSS 4 · @nuxt/content 3 · @nuxtjs/i18n · Chart.js · TypeScript · pnpm
 
-## Quick Start
-
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
-```
-
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
-
-## Setup
-
-Make sure to install the dependencies:
+## Démarrage
 
 ```bash
 pnpm install
+pnpm dev        # http://localhost:3100
 ```
 
-## Development Server
+## Scripts
 
-Start the development server on `http://localhost:3000`:
+| Commande | Description |
+|---|---|
+| `pnpm dev` | Serveur de développement (port 3100) |
+| `pnpm build` | Build de production |
+| `pnpm preview` | Prévisualisation du build |
+| `pnpm lint` | ESLint |
+| `pnpm typecheck` | Vérification TypeScript (vue-tsc) |
+| `pnpm test` | Tests unitaires Vitest |
 
-```bash
-pnpm dev
+## Tests
+
+11 tests unitaires dans `tests/` : formatage des données Banque mondiale (`app/utils/world-bank.ts`), parité des locales i18n (l'interface doit être bilingue — le journal ne l'est pas obligatoirement), validité du frontmatter des articles. La CI (GitHub Actions) exécute lint + typecheck + test + build à chaque push.
+
+## Structure
+
+```
+app/            # pages, composables, utils, assets (convention Nuxt 4)
+content/journal # articles Markdown par locale (fr, en)
+i18n/locales    # interface bilingue
+tests/          # tests unitaires Vitest
+docs/           # documentation du projet (état, roadmap, déploiement)
 ```
 
-## Production
+## Déploiement
 
-Build the application for production:
+Auto-hébergé sur un VPS via Docker (multi-stage, runtime Nitro standalone). Le pipeline est documenté dans [docs/deploiement.md](docs/deploiement.md).
 
-```bash
-pnpm build
-```
+## Licence
 
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Renovate integration
-
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+Voir [LICENSE](LICENSE).
