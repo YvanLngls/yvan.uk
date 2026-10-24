@@ -86,8 +86,9 @@ Particularités :
 ## Qualité, CI/CD, déploiement
 
 - **ESLint** : flat config `eslint.config.mjs` (@nuxt/eslint, style `commaDangle: 'never'`, `braceStyle: '1tbs'`).
-- **Typecheck** : `nuxt typecheck` (vue-tsc). Aucun test automatisé.
-- **CI** : `.github/workflows/ci.yml` — sur push : pnpm `lint` + `typecheck` (Node 22). Pas d'étape build.
+- **Tests** : Vitest (`pnpm test`) — 11 tests, 3 fichiers dans `tests/` : formatage/traitement des données Banque mondiale (`app/utils/world-bank.ts`), parité des locales i18n, frontmatter des articles.
+- **Typecheck** : `nuxt typecheck` (vue-tsc) — 0 erreur depuis le 24/10.
+- **CI** : `.github/workflows/ci.yml` — sur push : `lint` + `typecheck` + `test` (Node 22). Pas d'étape build.
 - **Renovate** : `renovate.json` (preset Nuxt).
 - **Déploiement** auto-hébergé manuel : `Dockerfile` multi-stage (runtime Nitro standalone, port 3100) + `docker-compose.yml` + script `build.sh` (build → `docker save` → rsync/ssh vers un VPS → `docker load` + compose up).
 
@@ -101,4 +102,5 @@ pnpm build      # build de production
 pnpm preview    # prévisualisation du build
 pnpm lint       # ESLint
 pnpm typecheck  # vérification TypeScript
+pnpm test       # tests unitaires Vitest (11 tests)
 ```

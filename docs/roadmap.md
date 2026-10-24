@@ -25,12 +25,12 @@ Objectif : un dépôt propre, rapide à cloner, sans artefacts générés. **Ré
 
 ## Phase 2 — Durcissement qualité 🟡
 
-- [ ] **Remettre la CI au vert** : `eslint --fix` (majorité auto-fixable), puis correction manuelle du typecheck (`about.vue`, `discovery.vue`, `macroview.vue`) — constat du 16/10 : la CI échoue depuis le début
-- [ ] Ajouter `pnpm build` à la CI (actuellement seulement lint + typecheck)
-- [ ] Vérifier le fallback i18n pour les 2 articles FR sans version EN (`ai-my-take`, `first-short-story`) — traduire ou accepter le fallback
+- [x] **Remettre la CI au vert** ✅ 24/10 — `eslint --fix`, typage manuel (`about.vue`, `discovery.vue`, `macroview.vue` + extraction de `app/utils/world-bank.ts`), option i18n obsolète `lazy` retirée. 0 erreur lint, 0 erreur typecheck
+- [ ] Ajouter `pnpm build` à la CI (actuellement seulement lint + typecheck + test)
+- [x] Parité i18n ✅ 24/10 — décision : l'**interface** doit être bilingue (testée), le **journal** n'est pas obligé d'avoir les deux versions d'un article
 - [ ] Activer `app.pageTransition` dans `nuxt.config.ts` **ou** supprimer le CSS mort correspondant
 - [ ] Désactiver les devtools en production
-- [ ] (Optionnel) Mettre en place Vitest sur les composables/utilitaires critiques
+- [x] Tests unitaires Vitest ✅ 24/10 — 11 tests : formatage/traitement Banque mondiale, parité des locales (exemption `about.skills` en attendant l'alignement des CV), frontmatter des articles. Étape `test` ajoutée à la CI
 - [ ] Écrire un vrai `README.md` du projet (remplacer celui du starter)
 - [ ] Déploiement — fiabiliser `build.sh` : secrets externalisés (alias SSH + `.env.deploy`), health check post-déploiement + rollback, backup du script hors du poste, utilisateur dédié sur le VPS (détail : [deploiement.md](./deploiement.md))
 

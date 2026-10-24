@@ -1,12 +1,12 @@
 # État actuel du projet
 
-Bilan établi le 16/10/2026 (Nuxt 4.4.4, @nuxt/ui 4.7, @nuxt/content 3.13, pnpm 10).
+Bilan établi le 16/10/2026, mis à jour le 24/10/2026 (Nuxt 4.4.4, @nuxt/ui 4.7, @nuxt/content 3.13, pnpm 10).
 
 ## Ce qui fonctionne
 
 - Site complet et déployé : blog bilingue, `/about`, `/discovery`, `/macroview`, jukebox.
 - Stack moderne et à jour (Nuxt 4, Tailwind 4, TypeScript 6, @nuxt/content 3).
-- CI en place (lint + typecheck sur chaque push) mais **actuellement rouge** — détail en section 🟡 ci-dessous.
+- CI **verte depuis le 24/10** : 0 erreur lint, 0 erreur typecheck, 11 tests Vitest (3 fichiers) sur chaque push.
 - Bonnes pratiques Nuxt bien appliquées : `useAsyncData`, rechargement au changement de langue (`watch: [locale]`), pré-rendu de `/`, SEO de base (`useSeoMeta` global).
 - Déploiement Docker documenté et reproductible (`build.sh`).
 
@@ -29,11 +29,10 @@ Résolu par réinitialisation complète de l'historique (un seul commit propre +
 
 ### 🟡 À surveiller
 
-- **CI rouge (constat du 16/10)** : `pnpm lint` échoue (~172 erreurs, majoritairement auto-fixables : espaces, ordre des clés de config) et `pnpm typecheck` échoue (`about.vue` instantiation trop profonde, `discovery.vue` types `unknown`, ~20 erreurs de typage implicite dans `macroview.vue`). La CI GitHub exécute ces mêmes commandes → elle échoue depuis le début, apparemment jamais vérifiée.
 - Commentaires de debug laissés dans `nuxt.config.ts:39-44` (« ← Corrigé », « ← Sans slash final, plus fiable »).
 - Code du typewriter **dupliqué sur 3 pages** (index, journal, macroview) — non factorisé.
-- Tri des articles par date **lexicographique** (`order('date', 'DESC')` sur `MM/DD/YYYY`) : fonctionne avec ce format, fragile autrement.
-- 2 articles FR (`ai-my-take.md`, `first-short-story.md`) **sans version anglaise** — comportement de fallback à vérifier/décider.
+- Tri des articles par date **lexicographique** (`order('date', 'DESC')` sur `MM/DD/YYYY`) : fonctionne avec ce format, fragile autrement — gardé sous contrôle par un test.
+- 2 articles FR (`ai-my-take.md`, `first-short-story.md`) sans version anglaise — **choix assumé (24/10)** : le journal n'est pas bilingue par obligation, la parité i18n ne porte que sur l'interface (testée).
 - Transition de page : CSS `.page-enter/leave` présent dans `app.vue` mais `app.pageTransition` non activé dans `nuxt.config.ts`.
 - `discovery.vue:28` : `import { computed } from 'vue'` au milieu du `<script setup>` (fonctionne, non idiomatique).
 - `devtools.enabled: true` potentiellement actif en production.
