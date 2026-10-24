@@ -25,13 +25,13 @@ Objectif : un dépôt propre, rapide à cloner, sans artefacts générés. **Ré
 ## Phase 2 — Durcissement qualité 🟡
 
 - [x] **Remettre la CI au vert** ✅ 24/10 — `eslint --fix`, typage manuel (`about.vue`, `discovery.vue`, `macroview.vue` + extraction de `app/utils/world-bank.ts`), option i18n obsolète `lazy` retirée. 0 erreur lint, 0 erreur typecheck
-- [ ] Ajouter `pnpm build` à la CI (actuellement seulement lint + typecheck + test)
+- [x] `pnpm build` en CI ✅ 24/10 — 4ᵉ étape du workflow, build Nuxt (pré-rendu inclus) vérifié à chaque push
 - [x] Parité i18n ✅ 24/10 — décision : l'**interface** doit être bilingue (testée), le **journal** n'est pas obligé d'avoir les deux versions d'un article
-- [ ] Activer `app.pageTransition` dans `nuxt.config.ts` **ou** supprimer le CSS mort correspondant
-- [ ] Désactiver les devtools en production
+- [x] `app.pageTransition` ✅ 24/10 — transition « page » activée (fondu flouté, CSS existant réutilisé), choix A
+- [x] Devtools coupés en production ✅ 24/10 — clé `$production` dans `nuxt.config.ts` + `NODE_ENV=production` dans le Dockerfile builder ; ⚠️ prend effet au prochain déploiement
 - [x] Tests unitaires Vitest ✅ 24/10 — 11 tests : formatage/traitement Banque mondiale, parité des locales (exemption `about.skills` en attendant l'alignement des CV), frontmatter des articles. Étape `test` ajoutée à la CI
-- [ ] Écrire un vrai `README.md` du projet (remplacer celui du starter)
-- [ ] Déploiement — fiabiliser `build.sh` : secrets externalisés (alias SSH + `.env.deploy`), health check post-déploiement + rollback, backup du script hors du poste, utilisateur dédié sur le VPS (détail : [deploiement.md](./deploiement.md))
+- [x] README.md du projet ✅ 24/10 — remplace celui du starter
+- [ ] Déploiement — fiabiliser `build.sh` : secrets externalisés (alias SSH + `.env.deploy`), health check post-déploiement + rollback, backup du script hors du poste, utilisateur dédié sur le VPS (détail : [deploiement.md](./deploiement.md)) — **reporté volontairement**
 
 ## Phase 3 — Améliorations 🔵
 
