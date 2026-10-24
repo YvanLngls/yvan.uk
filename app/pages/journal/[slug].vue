@@ -10,6 +10,14 @@ const { data: post } = await useAsyncData(`post-${slug}-${locale.value}`, () => 
 }, {
   watch: [locale]
 })
+
+// SEO par article : le titre de l'onglet et la meta description suivent le frontmatter
+useHead(() => ({
+  title: post.value?.title,
+  meta: [
+    { name: 'description', content: post.value?.description || '' }
+  ]
+}))
 </script>
 
 <template>
