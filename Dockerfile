@@ -21,8 +21,9 @@ COPY package.json pnpm-lock.yaml* ./
 # 4. Installation reproductible de toutes les dépendances (dev incluses pour nuxt build)
 RUN pnpm install --frozen-lockfile
 
-# 5. Copie du code source et build de l'app Nuxt
+# 5. Copie du code source et build de l'app Nuxt (NODE_ENV fige devtools: false en prod)
 COPY . .
+ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=3584"
 RUN pnpm run build
 

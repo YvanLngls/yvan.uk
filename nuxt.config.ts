@@ -8,8 +8,19 @@ export default defineNuxtConfig({
     '@vueuse/motion/nuxt'
   ],
 
+  // Les builds de production (Docker pose NODE_ENV=production) n'embarquent pas les devtools
+  $production: {
+    devtools: {
+      enabled: false
+    }
+  },
+
   devtools: {
     enabled: true
+  },
+
+  app: {
+    pageTransition: { name: 'page' }
   },
 
   css: ['~/assets/css/main.css'],
