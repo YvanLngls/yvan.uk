@@ -35,10 +35,10 @@ Objectif : un dépôt propre, rapide à cloner, sans artefacts générés. **Ré
 
 ## Phase 3 — Améliorations 🔵
 
-- [ ] Factoriser l'effet typewriter en composable/composant partagé (3 duplications actuellement)
+- [x] Factoriser l'effet typewriter ✅ 24/10 — composable `useTypewriter` (`app/composables/useTypewriter.ts`) utilisé par les 3 pages ; corrige au passage deux timers jamais nettoyés (index, journal)
 - [ ] Trier les articles par date réelle (parser le frontmatter plutôt que tri lexicographique)
-- [ ] Uniformiser le typage TypeScript sur toutes les pages
-- [ ] `discovery.vue` : remonter l'import de `computed` en tête de `<script setup>`
+- [x] Uniformiser le typage TypeScript ✅ 24/10 — toutes les pages sont en `lang="ts"` et passent le typecheck
+- [x] `discovery.vue` import de `computed` ✅ 24/10 — déjà en tête de script (observation obsolète)
 - [ ] À discuter : toggle dark/light, recherche dans le journal, RSS feed, analytics respectueux de la vie privée
 
 ## Phase 4 — CI/CD automatisée (GitHub Actions) 🔵

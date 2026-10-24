@@ -22,7 +22,6 @@ Résolu par réinitialisation complète de l'historique (un seul commit propre +
 
 ### 🟡 À surveiller
 
-- Code du typewriter **dupliqué sur 3 pages** (index, journal, macroview) — non factorisé.
 - Tri des articles par date **lexicographique** (`order('date', 'DESC')` sur `MM/DD/YYYY`) : fonctionne avec ce format, fragile autrement — gardé sous contrôle par un test.
 - `first-short-story.md` n'existe qu'en français — **choix assumé (24/10)** : le journal n'est pas bilingue par obligation, la parité i18n ne porte que sur l'interface (testée).
 
